@@ -1,0 +1,49 @@
+<section class="column">
+
+    <form id="test-login-form" data-auth-error="${properties.authError}"
+          action="${currentpage.path}/j_mycustom_security_check"
+          method="post" class="form-horizontal login-form">
+
+        <input type="hidden" name="resource" value="${properties.targetPath}.html">
+        <input type="hidden" name="_charset_" value="UTF-8"/>
+
+        <!-- This will hold any clent-side generated error messages -->
+        <div class="alert" id="login-errors" hidden>
+            <div class="arrow"></div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label" for="j_username">${'User ID:' @ i18n}</label>
+            <div class="control-field">
+                <input type="text" class="form-control" name="j_username" id="j_username"
+                       data-error="${properties.emptyUserError}" required>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label class="control-label" for="j_password">${'Password:' @ i18n}</label>
+            <div class="control-field">
+                <input type="password" class="form-control" name="j_password" id="j_password"
+                       data-error="${properties.emptyPasswordError}" required>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="submission-options">
+                <button type="submit" class="btn btn-primary pull-right" id="login-btn">${'Sign in' @ i18n}</button>
+
+            </div>
+        </div>
+
+    </form>
+
+</section>
+
+<section class="column rte" style="margin: 0.3em 0 0.3em;">
+    <p data-sly-use.text="text.js" data-sly-unwrap="${text.context == text.CONST.CONTEXT_HTML}"
+       class="${text.cssClass}">
+        ${text.text @ context=text.context} </p>
+</section>
